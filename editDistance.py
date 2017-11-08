@@ -23,30 +23,46 @@ def editDistance(s1, s2):
                 L[i][j] = 1 + min(L[i][j-1],
                                   L[i-1][j],
                                   L[i-1][j-1])
-    print(L[lenS2][lenS1])
+    print("Number of operations = ",L[lenS2][lenS1])
 
     # Traceback
     
     updated_s2 = ""
     i = lenS2
     j = lenS1
+    step = 0
 
-    while i > 0 and j > 0:
+    while i > 0 or j > 0:
         up = L[i-1][j]+1
         left = L[i][j-1]+1
+        step+=1
         
-        if s1[j-1] == s2[i-1]: 
+        if s1[j-1] == s2[i-1]:          #MATCH --> go diagonal + Do Nothing
             updated_s2 += s2[i-1]
             i = i-1
             j = j-1
-            print("*")
-        else:
+            print(step,"-Do nothing")
+            print("    Updated String : ", updated_s2)
+        else:                               # MIS-MATCH
             diagonal = L[i-1][j-1]+1
-            if up <= left :    # go up ^
+            if up <= left and up <= diagonal :    # go up 
                 updated_s2 += s2[i-1]
-                print(updated_s2)
+                print(step,"-Insert ",s2[i-1])
+                print("    Updated String : ", updated_s2)
                 i = i-1
-            #else if 
+            elif left < up :            # go left
+                updated_s2 += "-"
+                print(step,"Delete ",s1[j-1])
+                print("    Updated String : ", updated_s2)
+                j = j-1
+
+            elif diagonal < up :        # go diagonal 
+                updated_s2 += s2[i-1]
+                print(step,"Convert ",s1[j-1]," into ",s2[i-1])
+                print("    Updated String : ", updated_s2)
+                i = i-1
+                j = j-1
+                
             
             
         
