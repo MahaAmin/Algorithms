@@ -25,7 +25,7 @@ long long Fib(int n, int k)
     for(int i=2; i<n; i++)
     {
       long long temp = fib;
-      fib += k*fibPrev;
+      fib += fibPrev-(fibPrev/k);
       fibPrev = temp;
     }
     return fib;
@@ -34,6 +34,6 @@ long long Fib(int n, int k)
 
 int main()
 {
-  cout<<Fib(33,3)<<endl;
+  cout<<Fib(98,16)<<endl;
   return 0;
 }
