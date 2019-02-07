@@ -28,12 +28,10 @@ void BINS(string fileName)
   int arr1[n];
   int arr2[m];
   ifstream myfile(fileName);
-  string line, file_contents;
+  string line;
   int counter=0;
   int i = 0;
   int j = 0;
-  bool flag1 = false;
-  bool flag2 = false;
   while(getline(myfile, line))
   {
     stringstream anyth(line);

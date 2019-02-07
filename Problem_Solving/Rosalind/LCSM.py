@@ -20,7 +20,6 @@ def readInput(fileName):
 
 def LCSM(fileName):
     patterns=readInput(fileName)
-    print(patterns)
     #get the shortest pattern
     k=len(patterns[0])
     index=0
