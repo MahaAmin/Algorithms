@@ -1,0 +1,6 @@
+S=input()
+S=S.split( )
+S=set(S)
+unq=len(S)
+result = 4 - int(unq)
+print(result)
